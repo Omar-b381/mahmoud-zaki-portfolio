@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mahmoud Zaki - Director of Patient Experience & Hospitality Executive Portfolio">
+    <title>Mahmoud Zaki | Executive Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #0a192f; /* Dark Navy - Authority */
+            --secondary-color: #d4af37; /* Gold - Luxury/Hospitality */
+            --text-color: #333333;
+            --bg-light: #f4f4f4;
+            --bg-white: #ffffff;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-white);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: rgba(10, 25, 47, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--secondary-color); }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle { display: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: 700;
+            border-radius: 2px;
+            transition: var(--transition);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+        }
+
+        /* --- SECTIONS COMMON --- */
+        section { padding: 80px 10%; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+
+        /* --- ABOUT SECTION --- */
+        #about { background-color: var(--bg-white); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-text p { margin-bottom: 15px; color: #555; }
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .stat-item h3 { font-size: 2.5rem; color: var(--secondary-color); }
+        .stat-item span { font-size: 0.9rem; text-transform: uppercase; }
+
+        /* --- EXPERIENCE TIMELINE --- */
+        #experience { background-color: var(--bg-light); }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .container-box {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            opacity: 0; /* Animation init */
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .container-box.visible { opacity: 1; transform: translateY(0); }
+
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; }
+
+        .date {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .right .content { border-left: none; border-right: 4px solid var(--secondary-color); }
+
+        /* Timeline Circles */
+        .container-box::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--bg-white);
+            border: 4px solid var(--primary-color);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .right::after { left: -10px; }
+
+        /* --- SKILLS --- */
+        #skills { background-color: var(--primary-color); color: white; }
+        #skills .section-title { color: white; }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .skill-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        .skill-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); }
+        .skill-card i { font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 15px; }
+
+        /* --- CONTACT --- */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .contact-info div {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .contact-info i { color: var(--secondary-color); font-size: 1.2rem; }
+
+        footer {
+            background: #050d1a;
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media screen and (max-width: 768px) {
+            .nav-links { display: none; } /* Add JS for hamburger later if needed */
+            .hero-content h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            
+            .timeline::after { left: 31px; }
+            .container-box { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .container-box::after { left: 21px; }
+            .left { text-align: left; }
+            .right { left: 0; }
+            .right .content { border-right: none; border-left: 4px solid var(--secondary-color); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">M. ZAKI</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Mahmoud Zaki</h1>
+            <p>Director of Patient Experience | Ex-Four Seasons Leader</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-title">Professional Profile</div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    With over 25 years of experience in the luxury hospitality sector and healthcare leadership, 
+                    I specialize in enhancing patient and guest experiences through strategic operational management. 
+                    My philosophy bridges the gap between 5-star hospitality standards and patient-centered care.
+                </p>
+                <p>
+                    Currently leading initiatives to improve soft skills, product offerings, and service protocols 
+                    at major healthcare facilities in the UAE.
+                </p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>25+</h3>
+                        <span>Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <span>Leadership Roles</span>
+                    </div>
+                </div>
+            </div>
+          <div class="about-img">
+              <img src="profile.jpg" alt="Mahmoud Zaki" style="width: 100%; height: 400px; object-fit: cover; border-radius: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-title">Career Journey</div>
+        <div class="timeline">
+            
+            <div class="container-box left">
+                <div class="content">
+                    <span class="date">Nov 2023 - Present</span>
+                    <h3>Director of Patient Experience</h3>
+                    <h4>Burjeel Hospital, Abu Dhabi</h4>
+                    <p>Leading Patient Experience Ambassadors, Protocol Team, and overseeing complaint management systems according to DOH guidelines.</p>
+                </div>
+            </div>
+
+            <div class="container-box right">
+                <div class="content">
+                    <span class="date">Dec 2021 - Nov 2023</span>
+                    <h3>Director of Guest Services</h3>
+                    <h4>Four Seasons Resort Jumeirah Beach</h4>
+                    <p>In charge of Front Desk, Concierge, and Guest Experience. Managed budget processes and led a team of managers and supervisors.</p>
+                </div>
+            </div>
+
+            <div class="container-box left">
+                <div class="content">
+                    <span class="date">Dec 2020 - Dec 2021</span>
+                    <h3>Front Office Manager</h3>
+                    <h4>Four Seasons Hotels and Resorts, Dubai</h4>
+                    <p>Key strategic decision-maker. Controlled Front Desk activities, maximized occupancy rates, and ensured financial goals were met.</p>
+                </div>
+            </div>
+
+            <div class="container-box right">
+                <div class="content">
+                    <span class="date">Apr 2018 - Dec 2020</span>
+                    <h3>Guest Services Manager</h3>
+                    <h4>Four Seasons Resort Jumeirah Beach</h4>
+                    <p>Oversaw bell staff, transportation, and kids club. Acted as Duty Manager ensuring total guest satisfaction.</p>
+                </div>
+            </div>
+
+            <div class="container-box left">
+                <div class="content">
+                    <span class="date">Aug 2014 - Apr 2018</span>
+                    <h3>Night Manager</h3>
+                    <h4>Four Seasons Resort Jumeirah Beach</h4>
+                    <p>Managed overnight operations, handled emergencies, and ensured accurate completion of the daily night audit.</p>
+                </div>
+            </div>
+
+            <div class="container-box right">
+                <div class="content">
+                    <span class="date">2002 - 2014</span>
+                    <h3>Various Leadership Roles</h3>
+                    <h4>Four Seasons (Cairo & Sharm El Sheikh)</h4>
+                    <p>Housekeeping Manager, Guest Experience Manager, Chief Concierge. Part of multiple pre-opening teams.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-title">Core Competencies</div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-hospital-user"></i>
+                <h3>Patient Experience</h3>
+                <p>Patient-centered strategies & Feedback monitoring</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-hotel"></i>
+                <h3>Hospitality Management</h3>
+                <p>Rooms Division, Front Office & Concierge</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-users-cog"></i>
+                <h3>Team Leadership</h3>
+                <p>Training, Development & Conflict Resolution</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Operations</h3>
+                <p>Budgeting, Forecasting & Quality Control</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title">Contact Information</div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Dubai, UAE</span>
+                </div>
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <span>mzlm2000@hotmail.com</span>
+                </div>
+                <div>
+                    <i class="fas fa-phone"></i>
+                    <span>+971 55 99 599 74</span>
+                </div>
+                <div>
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com/in/mahmoud-zaki-5a59aa45" target="_blank">LinkedIn Profile</a>
+                </div>
+            </div>
+            <form style="flex-grow: 1; max-width: 500px; display: flex; flex-direction: column; gap: 15px;">
+                <input type="text" placeholder="Your Name" style="padding: 10px; border: 1px solid #ddd;">
+                <input type="email" placeholder="Your Email" style="padding: 10px; border: 1px solid #ddd;">
+                <textarea rows="5" placeholder="Message" style="padding: 10px; border: 1px solid #ddd;"></textarea>
+                <button type="button" class="btn" style="border:none; cursor:pointer;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Mahmoud Zaki. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // 1. Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 2. Scroll Animation (Fade In)
+        const observerOptions = { threshold: 0.2 };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.container-box').forEach(box => {
+            observer.observe(box);
+        });
+
+        // 3. Navbar Background on Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
+            } else {
+                nav.style.boxShadow = "none";
+            }
+        });
+    </script>
+</body>
+</html>
